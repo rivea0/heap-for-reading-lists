@@ -128,8 +128,10 @@ def register():
             return apology("Passwords do not match", 400)
 
         # Register the user
-        db.execute("INSERT INTO users (username, hash, reading_speed) VALUES (:username, :hash, :speed)", {"username": username,
-                   "hash": generate_password_hash(password, method='pbkdf2:sha256', salt_length=16), "speed": speed})
+        db.execute("INSERT INTO users (username, hash, reading_speed) VALUES (:username, :hash, :speed)", 
+                   {"username": username,
+                   "hash": generate_password_hash(password, method='pbkdf2:sha256', salt_length=16), 
+                   "speed": speed})
 
         db.commit()
 
@@ -345,7 +347,8 @@ def overview():
     hrs = get_time_stats(rows, speed[0])
     histogram_filepath = create_histogram(hrs)
 
-    return render_template("overview.html", grouped_pages=grouped_pages, pie_filepath=pie_filepath, histogram_filepath=histogram_filepath)
+    return render_template("overview.html", grouped_pages=grouped_pages, 
+                           pie_filepath=pie_filepath, histogram_filepath=histogram_filepath)
 
 
 @app.route("/remove", methods=["POST"])
@@ -358,7 +361,8 @@ def remove():
 
     # Connect to database and delete the book from user's list
     db = get_db()
-    db.execute("DELETE FROM books WHERE user_id = :user_id AND title = :book_title", {"user_id": session["user_id"], "book_title": book_title})
+    db.execute("DELETE FROM books WHERE user_id = :user_id AND title = :book_title", 
+               {"user_id": session["user_id"], "book_title": book_title})
     db.commit()
 
     db.close()
