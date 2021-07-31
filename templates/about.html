@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    About
+{% endblock %}
+
+{% block body %}
+    <div class="p-5 m-3 text-start">
+        <h4 class="text-center">Heap is created as an attempt to solve the problems of overwhelming TBR (to-be-read) lists.</h5><br>
+        <p>As the saying goes, "so many books, so little time". This is especially true for those who love stockpiling books to read, adding one after another to the list, but when the list becomes overloaded it ends up overwhelming readers. Eventually it becomes harder to choose and sort out the books you really want to read, and this leads to a less quality reading time.</p>
+        <p>To clarify, it is not bad at all to have a robust TBR (to-be-read) list that you may never get around to finish, even Umberto Eco <a href="https://www.theguardian.com/lifeandstyle/2015/jun/26/umberto-eco-antilibrary-oliver-burkeman" class="link-dark">agrees</a>. However, it is better to clearly distinguish the books according to some of their characteristics, such as the number of pages they have, or the approximate time to finish them.</p>
+        <h4 id="registering">Registering</h4>
+        <p>When you register for an account, all that is needed is a username and a password, also you need to choose your estimated reading speed —one of the three options from slow, average, and fast—. Of course, this is an oversimplification, and it is only required for generating the approximate reading time of each book.</p>
+        <h4 id="books-and-vision">Adding books</h4>
+        <p>You can add books by searching for the book's title and choosing one of the editions that come up. Heap uses Open Library APIs for all the data, and embraces Open Library's vision for universal access to all knowledge. So, if you cannot find the book you're searching for or find something missing, you can always <a href="https://openlibrary.org/account/login?redirect=/books/add" class="link-dark">add or edit</a> it there, and help build towards achieving that goal. Also, with that same vision in mind, there are no ads or third-party tracking tools. See <a href="https://www.eff.org/issues/privacy" class="link-dark">why</a> that is important.</p>
+        <h4>Your List</h4>
+        <p>In your overview page, you can see a pie chart for the percentages of the books you have according to their number of pages, as well as a histogram for the estimated reading time ranges in hours and the number of books that fall in each range. Reading time is calculated with the estimate such that with average speed a page is read in a minute; with slow speed half the page, and with fast speed two pages. Again, this is a crude estimate, and the other tools online produce varied results as well. You can also see each book grouped according to the number of pages they have, and an option (displayed as "−") to remove a book right below it. At the bottom of the page, there is also an option to delete your account if you wish to do so. You need to confirm your password in order to do that.</p>
+        <h4>Getting randomly generated recommendations</h4>
+        <p>You can also get a recommendation by number of pages or reading time. When you choose such options, a random book is generated from your list according to the number of pages or the reading time range you specify.</p>
+        <p class="fw-light mt-5">Big thanks to David J. Malan, Brian Yu, and the CS50 staff!</p>
+    </div>
+{% endblock %}

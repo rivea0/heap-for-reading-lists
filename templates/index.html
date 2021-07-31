@@ -1,0 +1,86 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Heap | For Reading Lists
+{% endblock %}
+
+{% block body %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7 order-md-2">
+        <img src="static/images/heap_books.png" class="img-fluid mx-auto mt-5">
+      </div>
+      <div class="col-md-5 order-md-1">
+        <h2 class="featurette-heading mt-5">Welcome to Heap.</h2> 
+        <h2 class="text-muted">For never-ending TBR lists.</span></h2>
+        <ul class="lead p-2">
+          <li>Create and analyze your reading list.</li><br>
+          <li>Get reading time and page statistics for each book.</li><br>
+          <li>Get recommendations from your list according to your reading time/number of pages of choice.</li><br>
+        </ul>   
+        <a class="btn btn-dark p-3 mt-auto" href="{{ url_for('register') }}">Register</a>    
+      </div>
+    </div>
+  </div>
+  <hr class="featurette-divider">
+  <div class="row featurette">
+    <div class="col-md-7 order-md-2">
+      <br><h2 class="featurette-heading">Get quality reading time, <span class="text-muted">even if there is so much to choose.</span></h2><br>
+      <p class="lead">No matter how many books to add/bookmark/wishlist, better manage what you <b>really</b> want to read.</p>
+    </div>
+    <div class="col-md-5 order-md-1">
+      <img src="static/images/quality_reading.png" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" focusable="false">
+    </div>
+  </div>
+  <hr class="featurette-divider">
+  <div class="row featurette">
+    <div class="col-md-7 order-md-1">
+      <br><h2 class="featurette-heading">Add as many books as you want. <span class="text-muted">Remove anytime.</span></h2><br>
+      <p class="lead">Create your bookshelf without feeling overwhelmed. Remove any book from your list anytime.</p>
+    </div>
+    <div class="col-md-5 order-md-2">
+      <img src="static/images/the_infinite_bookshelf.png" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" focusable="false">
+    </div>
+  </div>
+  <hr class="featurette-divider">
+  <div class="row featurette">
+    <div class="col-md-7 order-md-2">
+      <br><h2 class="featurette-heading">Better manage your time. <span class="text-muted">Get estimated reading time for your books.</span></h2><br>
+      <p class="lead">See approximate reading time for each book in your list, based on your estimated reading speed.</p>
+    </div>
+    <div class="col-md-5 order-md-1">
+      <img src="static/images/time.png" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" focusable="false">
+    </div>
+  </div>
+  <hr class="featurette-divider">
+  <div class="row featurette">
+    <div class="col-md-7 order-md-1">
+      <br><h2 class="featurette-heading">Get recommendations. <span class="text-muted">Based on your choices.</span></h2><br>
+      <p class="lead">Generate a random book from your list with number of pages or reading time of your choosing.</p>
+    </div>
+    <div class="col-md-5 order-md-2">
+      <img src="static/images/random_recommendation.png" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" focusable="false">
+    </div>
+  </div>
+  <hr class="featurette-divider">
+  <div class="row featurette">
+    <div class="d-flex justify-contents-center flex-wrap">
+      <img src="static/images/charts_1.png" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" focusable="false">        
+      <img src="static/images/charts_2.png" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" focusable="false">
+    </div>
+    <div class="flex-wrap">
+      <br><h2 class="featurette-heading">See statistics for your list. <span class="text-muted">Inspect what you want to read.</span></h2><br>
+      <p class="lead">Analyze your list with auto-generated charts.</p>
+    </div>
+  </div>
+  <hr class="featurette-divider">
+  <div class="row featurette">
+    <div class="col-md-7">
+      <br><h2 class="featurette-heading">Delete your account anytime. <span class="text-muted">Without any burden.</span></h2><br>
+      <p class="lead">No email required, no ads, no third-party tracking tools. See <a href="/about#books-and-vision" class="link-dark">more</a>.</p>
+    </div>
+    <div class="col-md-5">
+      <img src="static/images/peace.png" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" focusable="false">
+    </div>
+  </div>
+{% endblock %}

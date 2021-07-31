@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, width=device-width">
+
+        <!-- https://getbootstrap.com/docs/5.0/ -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+        <!-- https://favicon.io/favicon-converter/ -->
+        <link href="/static/favicon.ico" rel="icon">
+
+        <link href="/static/styles.css" rel="stylesheet">
+
+        <!-- https://getbootstrap.com/docs/5.0/ -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+        <script src="static/script.js"></script>
+
+        <title>{% block title %} {% endblock %}</title>
+
+    </head>
+
+    <body class="d-flex flex-column h-100">
+
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+            <div class="container-fluid">
+                {% if session.user_id %}
+                <a class="navbar-brand" href="{{ url_for('overview') }}">
+                    <img src="static/images/heap_nav_brand.png" alt="Heap logo" width="150" height="60">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarToggler">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ url_for('overview') }}">My List</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ url_for('search') }}">Add Book</a></li>
+                        <li class="nav-item dropdown"><a class="nav-link active dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Get Random Book</a>
+                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                                <li><a class="dropdown-item" href="{{ url_for('get_random_by_page') }}">By number of pages</a></li>
+                                <li><a class="dropdown-item" href="{{ url_for('get_random_by_time') }}">By reading time</a></li>
+                            </ul></li>                      
+                        <li class="nav-item"><a class="nav-link" href="{{ url_for('about') }}">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ url_for('logout') }}">Logout</a></li>
+                        <li class="nav-item"><a class="nav-link dark-mode-btn" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-circle-half" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/></svg></a></li>
+                    </ul>
+                </div>
+                {% else %}
+                <a class="navbar-brand" href="/">
+                    <img src="static/images/heap_nav_brand.png" alt="Heap logo" width="150" height="60">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarToggler">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ url_for('register') }}">Register</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ url_for('login') }}">Login</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ url_for('about') }}">About</a></li>
+                        <li class="nav-item"><a class="nav-link dark-mode-btn" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-circle-half" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/></svg></a></li>
+                    </ul>
+                </div>
+                {% endif %}
+            </div>
+        </nav>    
+
+        {% if get_flashed_messages() %}
+            <header>
+                <div class="alert alert-info border text-center" role="alert">
+                    {{ get_flashed_messages() | join(" ") }}
+                </div>
+            </header>
+        {% endif %}
+        
+        <main class="container p-3 text-center flex-shrink-0">
+            {% block body %} {% endblock %}
+        </main>
+        
+        <footer class="footer mt-auto py-3">
+            <div class="container">
+                <p class="float-end mb-1"><a class="link-dark" href="#">Back to top</a></p>
+                <p class="mb-1 text-muted">Data provided by <a href="https://openlibrary.org/developers/api" class="link-dark">Open Library  </a><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/></svg></p>
+                <p class="mb-0 text-muted">CS50 Final Project, 2021. By Eda Eren.</p>
+            </div>
+        </footer>
+
+    </body>
+    
+</html>

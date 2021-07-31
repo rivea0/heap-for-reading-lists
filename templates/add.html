@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Add to List
+{% endblock %}
+
+{% block body %}
+    <div class="text-center p-5">
+        <h1 class="edition-header">Choose an edition</h1>
+    </div>
+    <div class="container p-5">
+        <table class="table table-hover table-responsive">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">Publish Date</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for edition in editions_result %}
+                    <tr>
+                        <td><img src="{{ editions_result[edition]['cover'] }}"></td>
+                        <td>{{ editions_result[edition]["title"] }}</td>
+                        {% if "author" in editions_result[edition] %}
+                            <td>{{ editions_result[edition]["author"] }}</td>
+                        {% else %}
+                            <td> - </td>
+                        {% endif %}
+                        {% if "publish_date" in editions_result[edition] %}
+                            <td>{{ editions_result[edition]["publish_date"] }}</td>
+                        {% else %}
+                            <td> - </td>
+                        {% endif %}
+                        <td class="add-btn">
+                            <form action="{{ url_for('add', title=editions_result[edition]['title']) }}" method="post">
+                                <input name="edition" type="hidden" value="{{ editions_result[edition]['id'] }}">
+                                <input class="btn btn-dark text-center" type="submit" value="Add to List">
+                            </form>
+                        </td> 
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block body %}
+    <form action="{{ url_for('register') }}" method="post">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" type="text">
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="password" placeholder="Password" type="password">
+        </div>
+        <div class="form-group">
+          <input class="form-control" name="confirmation" placeholder="Enter password again" type="password">
+        </div>
+        <div>
+            <select name="speed" class="btn btn-light">
+                <option disabled selected value="">Choose your reading speed *</option>
+                {% for speed in speed_values %}
+                    <option value="{{ speed }}">{{ speed }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button class="btn btn-dark" type="submit">Register</button>
+    </form>
+    <div class="mt-5">
+        * See <a href="/about#registering" class="link-dark">why</a> this is required.
+    </div>
+{% endblock %}

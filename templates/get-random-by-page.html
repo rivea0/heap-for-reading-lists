@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Get Random Book by Number of Pages
+{% endblock %}
+
+{% block body %}
+    {% if pages %}
+        <form action="{{ url_for('get_random_by_page') }}" method="post">
+            <div class="form-group">
+                <select name="page" class="btn btn-light">
+                    <option disabled selected value="">Choose approximate number of pages</option>
+                    {% for i in pages %} 
+                        <option value="{{ i }}">{{ i }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button class="btn btn-dark" type="submit">Submit</button>
+        </form>
+    {% elif result %}
+        <div class="container p-5">
+            <div class="d-flex justify-contents-center flex-wrap">
+                <img src="{{ result['cover'] }}" class="img-fluid mx-auto">
+            </div>
+            <div class="flex-wrap p-3">
+                <p class="fs-4">{{ result['title'] }}</p>
+                <p class="fs-5">{{ result['number_of_pages']}} pages</p>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

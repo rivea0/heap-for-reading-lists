@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Error
+{% endblock %}
+
+{% block body %}
+    {% if empty_list == False %}
+        <div>
+            <p class="edition-header fs-1 fw-bold">{{ err }}</p>
+        </div>
+            <img src="static/images/apology.png" alt="{{ err }}" width="40%">
+        <div>    
+            <p class="edition-header fs-1 fw-bold">{{ msg }}</p>
+        </div>
+    {% else %}
+        <img src="static/images/empty-list.png" alt="{{ msg }}" width="40%">
+        <div>    
+            <p class="edition-header fs-1 fw-bold">{{ msg }}</p>
+        </div>    
+    {% endif %}
+{% endblock %}
